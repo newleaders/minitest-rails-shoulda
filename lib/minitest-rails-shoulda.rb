@@ -1,12 +1,9 @@
-require "minitest-rails-shoulda/version"
-require "minitest/rails"
-require "minitest/matchers"
-require "minitest-rails-shoulda/integrations"
+require "minitest-rails"
 
 module MiniTest
   module Rails
     module Shoulda
-      # Your code goes here...
+      VERSION = "0.2.0"
     end
   end
 end

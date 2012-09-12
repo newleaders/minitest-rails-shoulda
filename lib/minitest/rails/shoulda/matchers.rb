@@ -1,3 +1,5 @@
+require "minitest/matchers"
+
 if defined? ActionController
   require "shoulda/matchers/action_controller"
 
