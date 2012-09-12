@@ -1,16 +1,17 @@
 require "minitest/autorun"
+require "minitest/rails/shoulda/dsl"
 require "minitest/rails/shoulda/assertions"
 
 describe "Shoulda Style Assertions" do
 
-  describe "an array of values" do
+  context "an array of values" do
 
-    before do
+    setup do
       @a = ['abc', 'def', 3]
     end
 
     [/b/, 'abc', 3].each do |x|
-      it "contain #{x.inspect}" do
+      should "contain #{x.inspect}" do
         assert_raises(MiniTest::Assertion) do
           assert_does_not_contain @a, x
         end
@@ -19,13 +20,13 @@ describe "Shoulda Style Assertions" do
       end
     end
 
-    it "not contain 'wtf'" do
+    should "not contain 'wtf'" do
       assert_raises(MiniTest::Assertion) {assert_contains @a, 'wtf'}
       assert_does_not_contain @a, 'wtf'
       refute_contains @a, 'wtf'
     end
 
-    it "be the same as another array, ordered differently" do
+    should "be the same as another array, ordered differently" do
       assert_same_elements(@a, [3, "def", "abc"])
 
       assert_raises(MiniTest::Assertion) do
