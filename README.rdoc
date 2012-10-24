@@ -10,6 +10,10 @@ In Rails 3 and Bundler, add the following to your Gemfile:
     gem "minitest-rails-shoulda"
   end
 
+Add the following to your test helper:
+
+  require "minitest/rails/shoulda"
+
 == Usage
 
 === ActiveRecord Matchers
