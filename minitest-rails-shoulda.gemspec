@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "minitest-rails-shoulda"
+require File.expand_path("../lib/minitest/rails/shoulda/version", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "minitest-rails-shoulda"

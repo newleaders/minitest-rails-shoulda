@@ -1,9 +1,9 @@
 require "minitest-rails"
+require "minitest/rails/shoulda"
 
-module MiniTest
+module Minitest
   module Rails
     module Shoulda
-      VERSION = "0.2.0"
     end
   end
 end
