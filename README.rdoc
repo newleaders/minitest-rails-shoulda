@@ -68,3 +68,7 @@ Matchers to test common patterns:
     end
   end
 
+=== Contributors
+
+* Phil Cohen <github@phlippers.net>
+* Mike Moore <mike@blowmage.com>
