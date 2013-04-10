@@ -80,6 +80,61 @@ describe PostsController, "#show" do
 end
 ```
 
+### Shoulda Assertions (Expectations)
+
+Assertions:
+
+```ruby
+# collection contains some value
+assert_contains collection, "a"
+assert_contains collection, /a/
+assert_contains collection, 3
+
+# or
+
+refute_does_not_contain collection, "a"
+refute_does_not_contain collection, /a/
+refute_does_not_contain collection, 3
+
+
+# collection does not contain some value
+refute_contains collection, "b"
+refute_contains collection, /b/
+refute_contains collection, 5
+
+# or
+
+assert_does_not_contain collection, "b"
+assert_does_not_contain collection, /b/
+assert_does_not_contain collection, 5
+
+# collections contain the same elements
+assert_same_elements [1, b, "3"], ["3", 1, b]
+
+# collection does not contain the same elements
+refute_same_elements [1, b, "3"], ["4", b, 1]
+```
+
+And as Expectations:
+
+```ruby
+# collection contains some value
+collection.must_contain "a"
+collection.must_contain /a/
+collection.must_contain 3
+
+# collection does not contain some value
+collection.wont_contain "b"
+collection.wont_contain /b/
+collection.wont_contain 5
+
+# collections contain the same elements
+[1, b, "3"].must_have_same_elements ["3", 1, b]
+
+# collection does not contain the same elements
+[1, b, "3"].wont_have_same_elements ["4", b, 1]
+```
+
 
 ## Contributing
 
