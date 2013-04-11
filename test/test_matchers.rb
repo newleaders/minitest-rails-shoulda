@@ -8,39 +8,37 @@ describe HelloController do
     end
 
     describe "assertions" do
-      it "should give us HTML" do
-        assert_respond_with_content_type(@controller, :html)
+      it "should respond with success" do
+        assert_respond_with(@controller, :success)
       end
 
-      it "should not give us XML" do
-        refute_respond_with_content_type(@controller, :xml)
+      it "should not respond with error" do
+        refute_respond_with(@controller, :error)
       end
     end
 
     describe "with matchers" do
-      should "give us HTML" do
-        @controller.must respond_with_content_type(:html)
+      should "respond with success" do
+        @controller.must respond_with(:success)
       end
 
-      should_eventually "give us JSON"
+      should_eventually "respond with redirect"
 
-      # should_eventually "give us JSON" do
-      #   @controller.must respond_with_content_type(:json)
-      # end
+      should_eventually "respond with missing" do
+        @controller.must respond_with(:missing)
+      end
 
-      should "not give us XML" do
-        @controller.wont respond_with_content_type(:xml)
+      should "not respond with error" do
+        @controller.wont respond_with(:error)
       end
     end
 
     describe "with subject" do
       subject { @controller }
 
-      it { must respond_with_content_type(:html) }
-      it { wont respond_with_content_type(:xml) }
+      it { must respond_with(:success) }
+      it { wont respond_with(:error) }
 
-      must { respond_with_content_type(:html) }
-      wont { respond_with_content_type(:xml) }
     end
   end
 
