@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 #  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency "minitest-rails",    "~> 0.5.0"
+  s.add_runtime_dependency "minitest-rails",    "~> 0.9.2"
   s.add_runtime_dependency "minitest-matchers", "~> 1.2.0"
-  s.add_runtime_dependency "shoulda-matchers",  "~> 1.4.1"
+  s.add_runtime_dependency "shoulda-matchers",  "~> 2.0.0"
 end
