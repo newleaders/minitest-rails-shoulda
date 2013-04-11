@@ -1,3 +1,5 @@
+require 'minitest/spec'
+
 module MiniTest
   module Expectations
 
