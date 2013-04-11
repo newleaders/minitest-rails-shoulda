@@ -1,5 +1,4 @@
 require "minitest/matchers"
-require "minitest/rails"
 
 if defined?(ActiveRecord)
   require "shoulda/matchers/active_record"
