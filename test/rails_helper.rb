@@ -10,18 +10,26 @@ class TestApp < Rails::Application
 end
 class HelloController < ActionController::Base
   def world
-    render inline: "<!DOCTYPE html><title>TestApp</title>
-                    <h1>Hello <span>World</span></h1>
-                    <nav><ul><li><a href='/'>home</a></li></ul></nav>
-                    <p><label>Email Address<input type='text'></label></p>
-                    <button>random button</button>
-                    <label>going<input type='checkbox' checked='checked'></label>
-                    <label>avoid<input type='checkbox'></label>"
+    respond_to do |format|
+      format.html do
+        render inline: "<!DOCTYPE html><title>TestApp</title>
+                        <h1>Hello <span>World</span></h1>
+                        <nav><ul><li><a href='/'>home</a></li></ul></nav>
+                        <p><label>Email Address<input type='text'></label></p>
+                        <button>random button</button>
+                        <label>going<input type='checkbox' checked='checked'></label>
+                        <label>avoid<input type='checkbox'></label>"
+      end
+      format.xml do
+        render inline: 'No!', status: :forbidden
+      end
+    end
   end
 end
 
 Rails.application = TestApp
 
+require 'rails/test_help'
 require "minitest/rails"
 require "minitest/rails/shoulda"
 

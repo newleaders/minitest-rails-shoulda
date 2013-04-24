@@ -2,45 +2,63 @@ require "rails_helper"
 
 describe HelloController do
 
-  context "index" do
+  describe "index" do
     setup do
       get :world
     end
 
     describe "assertions" do
       it "should give us HTML" do
-        assert_respond_with_content_type(@controller, :html)
+        get :world, format: :html
+        assert_respond_with(@controller, :success)
+        # @controller.should respond_with_content_type(:html)
+        # assert_respond_with_content_type(@controller, :html)
       end
 
       it "should not give us XML" do
-        refute_respond_with_content_type(@controller, :xml)
+        get :world, format: :xml
+        assert_respond_with(@controller, :forbidden)
+        # refute_respond_with_content_type(@controller, :xml)
       end
     end
 
     describe "with matchers" do
-      should "give us HTML" do
-        @controller.must respond_with_content_type(:html)
+      it "should give us HTML" do
+        must respond_with(:success)
+      end
+      
+      it "should eventually give us JSON" do
+        skip "should_eventually give us JSON"
       end
 
-      should_eventually "give us JSON"
 
       # should_eventually "give us JSON" do
       #   @controller.must respond_with_content_type(:json)
       # end
 
-      should "not give us XML" do
-        @controller.wont respond_with_content_type(:xml)
+      it "should not give us XML" do
+        get :world, format: :xml
+        wont respond_with(:success)
       end
     end
 
     describe "with subject" do
       subject { @controller }
+      
+      describe "Html request" do
+        it { must respond_with(:success) }
+        it { wont respond_with(:forbidden) }
+      end
+      
+      describe "Forbidden XML request" do
+        before :each do
+          get :world, format: :xml
+        end
+        it { must respond_with(:forbidden) }
+        it { wont respond_with(:success) }
+      end
 
-      it { must respond_with_content_type(:html) }
-      it { wont respond_with_content_type(:xml) }
 
-      must { respond_with_content_type(:html) }
-      wont { respond_with_content_type(:xml) }
     end
   end
 
